@@ -1,0 +1,52 @@
+<div class="container">
+<div class="row">
+    <div class="offset-3 col-6">
+    
+<div class="card " id="card1">
+    <div class="card-body">
+        <h2 class="card-title"> Gérer les vendeurs</h2>
+        <input   [(ngModel)]="searchv" type="text" name="search" class="form-control" placeholder="search vendeur...">
+        <br><br>
+        <h3>List des  vendeurs</h3>
+
+
+        <div class="list-group">
+            <ul>
+              <div *ngFor="let client of clients | filter:searchv">
+                <li (click)="showCard(client)">
+                  <div scope="col">
+                    <img [src]="client.photoUrl" alt="{{ client.name }}" width="80" height="80">
+                    {{ client.name }}
+                  </div>
+                </li>
+              </div>
+            </ul>
+          </div>
+
+
+        <div class="container mt-3" *ngIf="selectedClient">
+            <div class="row">
+              <div class="col">
+                <div class="card" id="card-user">
+                  <div class="card-body">
+                    <img [src]="selectedClient.photoUrl" alt="{{ selectedClient.name }}" width="80px"  height="80px"  >
+
+                    <label for="name">Vendeur :</label> 
+
+                    <h5 class="card-title">{{ selectedClient.name }}</h5>
+                    
+                    <button id="supp" class="btn btn-danger"  (click)="deleteClient(selectedClient)" >Delete</button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+        
+    </div>
+</div>
+</div>
+</div>
+</div>
+

@@ -1,0 +1,38 @@
+<div class="container">
+   <div class="table-responsive">
+
+      <table class="table table-striped">
+        <tr>
+          <th>category</th>
+          <th>Nom</th>
+          <th>Prix</th>
+          <th>Description</th>
+          <th>URL</th>
+          <th>Image</th> 
+        </tr>
+        <tbody>
+          <tr *ngFor="let produit of produits">
+            <td>{{ produit.categoryProduit }}</td>
+            <td>{{ produit.nomProduit }}</td>
+            <td>{{ produit.prixProduit }}</td>
+            <td>{{ produit.description }}</td>
+
+            <td>
+              <div *ngFor="let url of produit.urls">
+                <a [href]="url" target="_blank">{{ url }}</a>
+              </div>
+            </td>
+
+            <td>
+              <img [src]="produit.imageUrl" alt="{{ produit.nomProduit }}" class="img-thumbnail" style="max-width: 100px;">
+            </td>
+
+            
+
+            <td><a class="btn btn-danger" (click)="supprimerProduit(produit)">Supprimer</a></td>
+            <td><a class="btn btn-success" [routerLink]="['/update', produit.categoryProduit]">Modifier</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
